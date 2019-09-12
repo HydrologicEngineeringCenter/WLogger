@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class Program
+    class WLogger
     {
-        static void Main(string[] args)
+        private static WLogger self = new WLogger();
+        private WLogger() { }
+
+        public static WLogger getLogger()
         {
+            return self;
         }
     }
 }
