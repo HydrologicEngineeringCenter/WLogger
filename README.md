@@ -15,10 +15,5 @@
 11.	Implement a message sender
 12.	Implement a message receiver that can write received messages to disk
 13.	Implement a message reciever that only writes error messages that are of level high.
-14.	Use at least 3 design patterns of the following five:
-	a.	Singleton Design Pattern
-	b.	Chain of Responsibility
-	c.	Observer pattern
-	d.	Decorator pattern
-	e.	Builder pattern
+14.	Use at least 3 design patterns of the following five:`Singleton Design Pattern`, `Chain of Responsibility`, `Observer pattern`, 	`Decorator pattern`, and `Builder pattern`.
 
