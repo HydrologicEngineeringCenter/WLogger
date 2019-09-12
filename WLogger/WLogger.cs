@@ -15,5 +15,33 @@ namespace WLogger
         {
             return self;
         }
+
+        public void Log(Message wood)
+        {
+            
+        }
+
+        public void Log(Message[] woods)
+        {
+            foreach (var plank in woods)
+            {
+                Log(plank);
+            }
+        }
+    }
+
+    class Message
+    {
+        private string message;
+
+        public Message(string message)
+        {
+            this.message = message;
+        }
+
+        public string GetMessage()
+        {
+            return message;
+        }
     }
 }
