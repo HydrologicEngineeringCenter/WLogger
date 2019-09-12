@@ -1,4 +1,5 @@
-﻿The overall goal of WLogger is to create a messaging system that meets the following requirements:
+## Goal of WLogger
+### Create a messaging system that meets the following requirements:
 
 
 1.	There can only be one instance of an object that processes messages per application – all messages must be sent to a singular processor. 
