@@ -28,20 +28,81 @@ namespace WLogger
                 Log(plank);
             }
         }
+
+        public string Report(Message Wood)
+        {
+            return "";
+        }
     }
 
-    class Message
+    interface Message
     {
-        private string message;
+        string GetMessage(string text);
+        void AppendToMessage(string text);
+    }
 
-        public Message(string message)
+    class BasicMessage : Message
+    {
+        public void AppendToMessage(string text)
         {
-            this.message = message;
+            throw new NotImplementedException();
         }
 
-        public string GetMessage()
+        public string GetMessage(string text)
         {
-            return message;
+            throw new NotImplementedException();
+        }
+    }
+
+    class ErrorMessage : Message
+    {
+        public void AppendToMessage(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetMessage(string text)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class TimeStampedMessage : Message
+    {
+        public void AppendToMessage(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetMessage(string text)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class MessageSender
+    {
+        
+    }
+
+    interface MessageWriter
+    {
+        void Write(string text);
+    }
+
+    class DiskMessageWriter : MessageWriter
+    {
+        public void Write(string text)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class ErrorMessageWriter : MessageWriter
+    {
+        public void Write(string text)
+        {
+            throw new NotImplementedException();
         }
     }
 }
