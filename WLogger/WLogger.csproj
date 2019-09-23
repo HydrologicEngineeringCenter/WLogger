@@ -43,7 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicMessage.cs" />
+    <Compile Include="DiskMessageWriter.cs" />
+    <Compile Include="ErrorMessage.cs" />
+    <Compile Include="ErrorMessageWriter.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageSender.cs" />
+    <Compile Include="MessageWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeStampedMessage.cs" />
     <Compile Include="WLogger.cs" />
   </ItemGroup>
   <ItemGroup>
