@@ -8,14 +8,16 @@ namespace WLogger
 {
     class BasicMessage : IBasicMessage
     {
-        public void AppendToMessage(string text)
+        private string message = "";
+
+        public BasicMessage(string text)
         {
-            throw new NotImplementedException();
+            message = text;
         }
 
-        public string GetMessage(string text)
+        public string GetMessage()
         {
-            throw new NotImplementedException();
+            return message;
         }
     }
 }

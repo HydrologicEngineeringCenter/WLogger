@@ -8,5 +8,6 @@ namespace WLogger
 {
     interface IPayloadMessage : IMessage
     {
+        object GetPayload();
     }
 }

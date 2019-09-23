@@ -47,6 +47,7 @@
     <Compile Include="Classes\DiskMessageWriter.cs" />
     <Compile Include="Classes\ErrorMessage.cs" />
     <Compile Include="Classes\ErrorMessageWriter.cs" />
+    <Compile Include="Interfaces\IMessageReceiver.cs" />
     <Compile Include="Interfaces\IErrorMessageWriter.cs" />
     <Compile Include="Interfaces\IErrorMessage.cs" />
     <Compile Include="Interfaces\IDiskMessageWriter.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Interfaces\IMessageWriter.cs" />
     <Compile Include="Interfaces\IPayloadMessage.cs" />
     <Compile Include="Classes\PayloadMessage.cs" />
+    <Compile Include="Classes\MessageReceiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\TimeStampedMessage.cs" />
     <Compile Include="Classes\WLogger.cs" />

@@ -8,14 +8,23 @@ namespace WLogger
 {
     class PayloadMessage : IPayloadMessage
     {
-        public void AppendToMessage(string text)
+        private string message = "";
+        object payload;
+
+        public PayloadMessage(string text, object payload)
         {
-            throw new NotImplementedException();
+            message = text;
+            this.payload = payload;
         }
 
-        public string GetMessage(string text)
+        public string GetMessage()
         {
-            throw new NotImplementedException();
+            return message;
+        }
+
+        public object GetPayload()
+        {
+            return payload;
         }
     }
 }

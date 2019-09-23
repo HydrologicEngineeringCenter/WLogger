@@ -9,6 +9,8 @@ namespace WLogger
     sealed class WLogger
     {
         private static WLogger self = new WLogger();
+        private List<IMessage> messages = new List<IMessage>();
+
         private WLogger() { }
 
         public static WLogger getLogger()
@@ -18,20 +20,32 @@ namespace WLogger
 
         public void Log(IMessage wood)
         {
-            
+            messages.Add(wood);
         }
 
-        public void Log(IMessage[] woods)
+        public void Log(List<IMessage> woods)
         {
-            foreach (var plank in woods)
-            {
-                Log(plank);
-            }
+            messages.AddRange(woods);
         }
 
-        public string Report(IMessage Wood)
+        public List<IMessage> Flush()
         {
-            return "";
+            return messages;
+        }
+
+        public IMessage GetLatestMessage()
+        {
+            return messages[0];
+        }
+
+        public void WashAll()
+        {
+            messages.Clear();
+        }
+
+        public void Wash(int index)
+        {
+            messages.RemoveAt(index);
         }
     }
 }

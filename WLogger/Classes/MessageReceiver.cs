@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IMessage
+    class MessageReceiver : IMessageReceiver
     {
-        string GetMessage();
+        WLogger logger;
+
     }
 }

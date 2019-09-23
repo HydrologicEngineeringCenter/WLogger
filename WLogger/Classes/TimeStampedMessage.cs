@@ -8,14 +8,16 @@ namespace WLogger
 {
     class TimeStampedMessage : ITimeStampedMessage
     {
-        public void AppendToMessage(string text)
+        private string message = "";
+
+        public TimeStampedMessage(string text)
         {
-            throw new NotImplementedException();
+            message = "[" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "] " + text;
         }
 
-        public string GetMessage(string text)
+        public string GetMessage()
         {
-            throw new NotImplementedException();
+            return message;
         }
     }
 }

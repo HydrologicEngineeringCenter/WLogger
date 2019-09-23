@@ -8,14 +8,29 @@ namespace WLogger
 {
     class ErrorMessage : IErrorMessage
     {
-        public void AppendToMessage(string text)
+        
+        private int ErrorLevel = 0;
+        private string message = "";
+
+        public ErrorMessage(string text, int errorLevel = 0)
         {
-            throw new NotImplementedException();
+            message = text;
+            ErrorValueProcessing(errorLevel);
         }
 
-        public string GetMessage(string text)
+        private void ErrorValueProcessing(int error)
         {
-            throw new NotImplementedException();
+            if (error > 2)
+                ErrorLevel = 2;
+            else if (error < 0)
+                ErrorLevel = 0;
+            else
+                ErrorLevel = error;
+        }
+
+        public string GetMessage()
+        {
+            return message;
         }
     }
 }
