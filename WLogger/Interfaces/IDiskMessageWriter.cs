@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface Message
+    interface IDiskMessageWriter : IMessageWriter
     {
-        string GetMessage(string text);
-        void AppendToMessage(string text);
+
     }
 }

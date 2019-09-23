@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class BasicMessage : Message
+    class DiskMessageWriter : IDiskMessageWriter
     {
-        public void AppendToMessage(string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetMessage(string text)
+        public void Write(string text)
         {
             throw new NotImplementedException();
         }

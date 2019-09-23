@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class DiskMessageWriter : MessageWriter
+    interface IMessage
     {
-        public void Write(string text)
-        {
-            throw new NotImplementedException();
-        }
+        string GetMessage(string text);
+        void AppendToMessage(string text);
     }
 }

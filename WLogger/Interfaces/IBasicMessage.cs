@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface MessageWriter
+    interface IBasicMessage : IMessage
     {
-        void Write(string text);
     }
 }

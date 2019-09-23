@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class MessageSender
+    interface IErrorMessageWriter : IMessageWriter
     {
-
     }
 }

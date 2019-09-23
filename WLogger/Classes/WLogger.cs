@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class WLogger
+    sealed class WLogger
     {
         private static WLogger self = new WLogger();
         private WLogger() { }
@@ -16,12 +16,12 @@ namespace WLogger
             return self;
         }
 
-        public void Log(Message wood)
+        public void Log(IMessage wood)
         {
             
         }
 
-        public void Log(Message[] woods)
+        public void Log(IMessage[] woods)
         {
             foreach (var plank in woods)
             {
@@ -29,7 +29,7 @@ namespace WLogger
             }
         }
 
-        public string Report(Message Wood)
+        public string Report(IMessage Wood)
         {
             return "";
         }

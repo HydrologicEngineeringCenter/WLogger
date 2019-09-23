@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class ErrorMessageWriter : MessageWriter
+    class PayloadMessage : IPayloadMessage
     {
-        public void Write(string text)
+        public void AppendToMessage(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetMessage(string text)
         {
             throw new NotImplementedException();
         }
