@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class ErrorMessageWriter : IErrorMessageWriter
+    public class ErrorMessageWriter : IErrorMessageWriter
     {
         public string path = "";
 

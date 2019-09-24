@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class DiskMessageWriter : IDiskMessageWriter
+    public class DiskMessageWriter : IDiskMessageWriter
     {
         public readonly string path = "";
 

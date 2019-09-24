@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    sealed class WLogger
+    public sealed class WLogger
     {
         private static WLogger self = new WLogger();
         private MessageSender sender = new MessageSender();
-        private HighErrorDiskMessageReceiver receiver = new HighErrorDiskMessageReceiver();
+        private FilteredMessageReceiver receiver = new FilteredMessageReceiver();
         private List<IMessageReceiver> listeners = new List<IMessageReceiver>();
-        public Type MessageFilter = null;
-        public int ErrorFilter = -1;
 
         private WLogger()
         {
@@ -36,13 +34,13 @@ namespace WLogger
 
         public void Flush()
         {
-            if (FilterMessages())
+            if (receiver.MessageFilter == null)
             {
                 foreach (var listener in listeners)
                 {
-                    foreach (var message in messages)
+                    foreach (var message in receiver.messages)
                     {
-                        ProcessMessage(listener, message);
+                        sender.Send(listener, message);
                     }
                 }
             }
@@ -50,57 +48,11 @@ namespace WLogger
             {
                 foreach (var listener in listeners)
                 {
-                    sender.Send(listener, messages);
+                    sender.Send(listener, receiver.messages);
                 }
             }
             
-            messages.Clear();
-        }
-
-        private void ProcessMessage(IMessageReceiver listener, IMessage message)
-        {
-            if (MessageFilter == null)
-            {
-                sender.Send(listener, message);
-            }
-            else if (message.GetType() == MessageFilter)
-            {
-                if (MessageFilter == typeof(IErrorMessage))
-                {
-                    ErrorMessageHandling(listener, message);
-                }
-                else
-                {
-                    sender.Send(listener, message);
-                }
-            }
-        }
-
-        private void ErrorMessageHandling(IMessageReceiver listener, IMessage message)
-        {
-            if (((IErrorMessage)message).GetErrorLevel() == ErrorFilter)
-            {
-                sender.Send(listener, message);
-            }
-        }
-
-        private bool FilterMessages()
-        {
-            if (ErrorFilter == -1 && MessageFilter == null)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public void GetNextMessage()
-        {
-            foreach (var listener in listeners)
-            {
-                if (messages.Count > 0)
-                    listener.Receive(messages[0]);
-            }
-            messages.RemoveAt(0);
+            receiver.messages.Clear();
         }
 
         public void AddListener(IMessageReceiver listener) => listeners.Add(listener);

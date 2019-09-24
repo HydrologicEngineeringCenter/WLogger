@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class PayloadMessage : IPayloadMessage
+    public class PayloadMessage : IPayloadMessage
     {
         private string message = "";
         object payload;

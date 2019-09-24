@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WLogger
 {
-    public class HighErrorDiskMessageReceiver : IHighErrorDiskMessageReceiver
+    public class FilteredMessageReceiver : IFilteredMessageReceiver
     {
         public List<IMessage> messages = new List<IMessage>();
-        public string path = "";
-        public Type MessageFilter = typeof(IErrorMessage);
-        public int ErrorFilter = 2;
-
-        public HighErrorDiskMessageReceiver(string path)
-        {
-            this.path = path;
-        }
+        public Type MessageFilter = null;
+        public int ErrorFilter = -1;
 
         public void Receive(IMessage message)
         {
@@ -32,27 +25,16 @@ namespace WLogger
             }
         }
 
-        public void Write(IMessage message)
-        {
-            File.WriteAllText(path, message.GetMessage());
-        }
-
-        public void Write(List<IMessage> messages)
-        {
-            using (StreamWriter file = new StreamWriter(path))
-            {
-                foreach (var message in messages)
-                {
-                    file.WriteLine(message.GetMessage());
-                }
-            }
-        }
-
         public void ProcessMessage(IMessage message)
         {
-            if (message.GetType() == MessageFilter)
+            if (MessageFilter == null)
+                messages.Add(message);
+            else if (message.GetType() == MessageFilter)
             {
-                ErrorMessageHandling(message);
+                if (MessageFilter == typeof(IErrorMessage))
+                    ErrorMessageHandling(message);
+                else
+                    messages.Add(message);
             }
         }
 

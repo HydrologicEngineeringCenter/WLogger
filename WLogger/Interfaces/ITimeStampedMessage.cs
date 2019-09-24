@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface ITimeStampedMessage
+    public interface ITimeStampedMessage
     {
 
     }

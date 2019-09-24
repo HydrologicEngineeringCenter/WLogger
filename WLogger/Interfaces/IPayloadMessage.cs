@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IPayloadMessage : IMessage, IPayload
+    public interface IPayloadMessage : IMessage, IPayload
     {
 
     }

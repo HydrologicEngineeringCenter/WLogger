@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class BasicMessage : IBasicMessage
+    public class BasicMessage : IBasicMessage
     {
         private string message = "";
 

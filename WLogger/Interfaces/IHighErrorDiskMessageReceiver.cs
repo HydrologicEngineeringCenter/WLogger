@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IHighErrorDiskMessageReceiver : IFilteredDiskMessageReceiver
+    public interface IHighErrorDiskMessageReceiver : IFilteredDiskMessageReceiver
     {
     }
 }

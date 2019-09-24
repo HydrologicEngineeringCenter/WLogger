@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class ErrorMessage : IErrorMessage
+    public class ErrorMessage : IErrorMessage
     {
         
         private int ErrorLevel = 0;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IPayload
+    public interface IPayload
     {
         object GetPayload();
     }

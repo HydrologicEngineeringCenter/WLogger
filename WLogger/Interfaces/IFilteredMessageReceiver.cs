@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IFilteredMessageReceiver : IMessageReceiver
+    public interface IFilteredMessageReceiver : IMessageReceiver
     {
         void ErrorMessageHandling(IMessage message);
         void ProcessMessage(IMessage message);
