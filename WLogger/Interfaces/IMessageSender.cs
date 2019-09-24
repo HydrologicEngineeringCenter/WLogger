@@ -8,6 +8,8 @@ namespace WLogger
 {
     interface IMessageSender
     {
+        void Send(IMessageReceiver receiver, IMessage message);
+        void Send(IMessageReceiver receiver, List<IMessage> messages);
 
     }
 }

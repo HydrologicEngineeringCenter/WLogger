@@ -12,6 +12,12 @@ namespace WLogger
         private int ErrorLevel = 0;
         private string message = "";
 
+        /// <summary>
+        /// Write an error message with an error level of 0, 1, or 2 indicating
+        /// an error of low, medium, and high, respectively.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="errorLevel"></param>
         public ErrorMessage(string text, int errorLevel = 0)
         {
             message = text;
@@ -28,9 +34,11 @@ namespace WLogger
                 ErrorLevel = error;
         }
 
-        public string GetMessage()
+        public string GetMessage() => message;
+
+        public int GetErrorLevel()
         {
-            return message;
+            return ErrorLevel;
         }
     }
 }

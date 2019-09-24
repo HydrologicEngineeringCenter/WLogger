@@ -10,14 +10,8 @@ namespace WLogger
     {
         private string message = "";
 
-        public TimeStampedMessage(string text)
-        {
-            message = "[" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "] " + text;
-        }
+        public TimeStampedMessage(string text) => message = $"[{DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")}]  {text}";
 
-        public string GetMessage()
-        {
-            return message;
-        }
+        public string GetMessage() => message;
     }
 }

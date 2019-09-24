@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,29 @@ namespace WLogger
 {
     class ErrorMessageWriter : IErrorMessageWriter
     {
-        public void Write(string text)
+        public string path = "";
+
+        public ErrorMessageWriter(string path)
         {
-            throw new NotImplementedException();
+            this.path = path;
+        }
+
+        public void Write(IMessage message)
+        {
+            if (message is IErrorMessage)
+                File.WriteAllText(path, message.GetMessage());
+        }
+
+        public void Write(List<IMessage> messages)
+        {
+            using (StreamWriter file = new StreamWriter(path))
+            {
+                foreach (var message in messages)
+                {
+                    if (message is IErrorMessage)
+                        file.WriteLine(message.GetMessage());
+                }
+            }
         }
     }
 }

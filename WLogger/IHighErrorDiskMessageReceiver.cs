@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    interface IPayloadMessage : IMessage, IPayload
+    interface IHighErrorDiskMessageReceiver : IFilteredDiskMessageReceiver
     {
-
     }
 }

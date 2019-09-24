@@ -7,11 +7,24 @@ using System.Threading.Tasks;
 
 namespace WLogger
 {
-    class DiskMessageWriter : IDiskMessageWriter
+    class DiskMessageReceiver : IDiskMessageReceiver
     {
-        public readonly string path = "";
+        public List<IMessage> messages = new List<IMessage>();
+        public string path = "";
+        public DiskMessageReceiver(string path)
+        {
+            this.path = path;
+        }
 
-        public DiskMessageWriter(string path) => this.path = path;
+        public void Receive(IMessage message)
+        {
+            messages.Add(message);
+        }
+
+        public void ReceiveAll(List<IMessage> messages)
+        {
+            messages.AddRange(messages);
+        }
 
         public void Write(IMessage message)
         {

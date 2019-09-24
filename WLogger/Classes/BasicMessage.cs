@@ -10,14 +10,8 @@ namespace WLogger
     {
         private string message = "";
 
-        public BasicMessage(string text)
-        {
-            message = text;
-        }
+        public BasicMessage(string text) => message = text;
 
-        public string GetMessage()
-        {
-            return message;
-        }
+        public string GetMessage() => message;
     }
 }

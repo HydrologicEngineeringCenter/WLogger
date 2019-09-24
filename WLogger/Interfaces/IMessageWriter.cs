@@ -8,6 +8,7 @@ namespace WLogger
 {
     interface IMessageWriter
     {
-        void Write(string text);
+        void Write(IMessage message);
+        void Write(List<IMessage> messages);
     }
 }

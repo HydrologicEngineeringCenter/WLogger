@@ -8,7 +8,17 @@ namespace WLogger
 {
     class MessageReceiver : IMessageReceiver
     {
-        WLogger logger;
+        public List<IMessage> messages = new List<IMessage>();
 
+        public MessageReceiver() { }
+
+        public void ReceiveAll(List<IMessage> messages)
+        {
+            messages.AddRange(messages);
+        }
+        public void Receive(IMessage message)
+        {
+            messages.Add(message);
+        }
     }
 }

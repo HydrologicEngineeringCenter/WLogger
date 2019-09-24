@@ -17,14 +17,8 @@ namespace WLogger
             this.payload = payload;
         }
 
-        public string GetMessage()
-        {
-            return message;
-        }
+        public string GetMessage() => message;
 
-        public object GetPayload()
-        {
-            return payload;
-        }
+        public object GetPayload() => payload;
     }
 }

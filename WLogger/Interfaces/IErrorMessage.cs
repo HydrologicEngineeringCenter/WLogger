@@ -8,5 +8,6 @@ namespace WLogger
 {
     interface IErrorMessage : IMessage
     {
+        int GetErrorLevel();
     }
 }
