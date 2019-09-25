@@ -9,11 +9,21 @@ namespace WLogger
 {
     public class DiskMessageReceiver : IDiskMessageReceiver
     {
-        public List<IMessage> messages = new List<IMessage>();
+        private List<IMessage> messages = new List<IMessage>();
         public string path = "";
         public DiskMessageReceiver(string path)
         {
             this.path = path;
+        }
+
+        public List<IMessage> GetAllMessages()
+        {
+            return messages;
+        }
+
+        public IMessage GetMessage(int index)
+        {
+            return messages[index];
         }
 
         public void Receive(IMessage message)
@@ -40,6 +50,11 @@ namespace WLogger
                     file.WriteLine(message.GetMessage());
                 }
             }
+        }
+
+        public void Clear()
+        {
+            messages.Clear();
         }
     }
 }

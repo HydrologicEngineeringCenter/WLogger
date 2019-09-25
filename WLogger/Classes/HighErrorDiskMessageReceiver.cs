@@ -79,5 +79,20 @@ namespace WLogger
             else
                 ErrorFilter = errorLevel;
         }
+
+        public IMessage GetMessage(int index)
+        {
+            return messages[index];
+        }
+
+        public List<IMessage> GetAllMessages()
+        {
+            return messages;
+        }
+
+        public void Clear()
+        {
+            messages.Clear();
+        }
     }
 }

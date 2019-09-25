@@ -18,5 +18,8 @@ namespace WLogger
         /// </summary>
         /// <param name="message"></param>
         void Receive(IMessage message);
+        IMessage GetMessage(int index);
+        List<IMessage> GetAllMessages();
+        void Clear();
     }
 }

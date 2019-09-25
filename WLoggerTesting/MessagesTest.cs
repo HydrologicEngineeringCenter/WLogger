@@ -1,16 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WLogger;
 
-namespace WLoggerTesting
+namespace MessageTests
 {
     [TestClass]
-    public class Messages
+    public class MessagesTest
     {
         [TestMethod]
         public void CreateBasicMessageAndCheckContents()
         {
             var s = "Hello World!";
-            BasicMessage basic = new BasicMessage(s);
+            IMessage basic = new BasicMessage(s);
             Assert.AreEqual(s, basic.GetMessage());
         }
 
@@ -18,7 +18,7 @@ namespace WLoggerTesting
         public void CreateLowErrorMessageAndCheckContents()
         {
             var e = "Error Occured: BAD121";
-            ErrorMessage errorMessage = new ErrorMessage(e, 0);
+            IErrorMessage errorMessage = new ErrorMessage(e, 0);
             Assert.AreEqual(e, errorMessage.GetMessage());
             Assert.AreEqual(0, errorMessage.GetErrorLevel());
         }
@@ -27,7 +27,7 @@ namespace WLoggerTesting
         public void CreateMediumErrorMessageAndCheckContents()
         {
             var e = "Error Occured: MOREBAD121";
-            ErrorMessage errorMessage = new ErrorMessage(e, 1);
+            IErrorMessage errorMessage = new ErrorMessage(e, 1);
             Assert.AreEqual(e, errorMessage.GetMessage());
             Assert.AreEqual(1, errorMessage.GetErrorLevel());
         }
@@ -36,7 +36,7 @@ namespace WLoggerTesting
         public void CreateHighErrorMessageAndCheckContents()
         {
             var e = "Error Occured: VERYBAD121";
-            ErrorMessage errorMessage = new ErrorMessage(e, 2);
+            IErrorMessage errorMessage = new ErrorMessage(e, 2);
             Assert.AreEqual(e, errorMessage.GetMessage());
             Assert.AreEqual(2, errorMessage.GetErrorLevel());
         }

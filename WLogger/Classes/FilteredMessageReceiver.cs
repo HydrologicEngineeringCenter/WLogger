@@ -8,9 +8,15 @@ namespace WLogger
 {
     public class FilteredMessageReceiver : IFilteredMessageReceiver
     {
-        public List<IMessage> messages = new List<IMessage>();
+        private List<IMessage> messages = new List<IMessage>();
         public Type MessageFilter = null;
         public int ErrorFilter = -1;
+        
+        public FilteredMessageReceiver(Type messageFilter = null, int errorFilter = -1)
+        {
+            ChangeMessageFilter(messageFilter);
+            ChangeErrorFilter(errorFilter);
+        }
 
         public void Receive(IMessage message)
         {
@@ -29,7 +35,7 @@ namespace WLogger
         {
             if (MessageFilter == null)
                 messages.Add(message);
-            else if (message.GetType() == MessageFilter)
+            else if (MessageFilter.IsAssignableFrom(message.GetType()))
             {
                 if (MessageFilter == typeof(IErrorMessage))
                     ErrorMessageHandling(message);
@@ -48,7 +54,7 @@ namespace WLogger
 
         public void ChangeMessageFilter(Type type)
         {
-            if (type is IMessage || type is null)
+            if (typeof(IMessage).IsAssignableFrom(type) || type is null)
                 MessageFilter = type;
         }
 
@@ -60,6 +66,21 @@ namespace WLogger
                 ErrorFilter = -1;
             else
                 ErrorFilter = errorLevel;
+        }
+
+        public IMessage GetMessage(int index)
+        {
+            return messages[index];
+        }
+
+        public List<IMessage> GetAllMessages()
+        {
+            return messages;
+        }
+
+        public void Clear()
+        {
+            messages.Clear();
         }
     }
 }

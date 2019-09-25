@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>WLogger</RootNamespace>
+    <RootNamespace>MessageTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

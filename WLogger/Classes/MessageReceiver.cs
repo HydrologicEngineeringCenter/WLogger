@@ -8,17 +8,32 @@ namespace WLogger
 {
     public class MessageReceiver : IMessageReceiver
     {
-        public List<IMessage> messages = new List<IMessage>();
+        private List<IMessage> messages = new List<IMessage>();
 
         public MessageReceiver() { }
 
         public void ReceiveAll(List<IMessage> messages)
         {
-            messages.AddRange(messages);
+            this.messages.AddRange(messages);
         }
         public void Receive(IMessage message)
         {
-            messages.Add(message);
+            this.messages.Add(message);
+        }
+
+        public IMessage GetMessage(int index)
+        {
+            return messages[index];
+        }
+
+        public List<IMessage> GetAllMessages()
+        {
+            return messages;
+        }
+
+        public void Clear()
+        {
+            messages.Clear();
         }
     }
 }

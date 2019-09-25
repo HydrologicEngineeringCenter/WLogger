@@ -38,7 +38,7 @@ namespace WLogger
             {
                 foreach (var listener in listeners)
                 {
-                    foreach (var message in receiver.messages)
+                    foreach (var message in receiver.GetAllMessages())
                     {
                         sender.Send(listener, message);
                     }
@@ -48,11 +48,11 @@ namespace WLogger
             {
                 foreach (var listener in listeners)
                 {
-                    sender.Send(listener, receiver.messages);
+                    sender.Send(listener, receiver.GetAllMessages());
                 }
             }
             
-            receiver.messages.Clear();
+            receiver.Clear();
         }
 
         public void AddListener(IMessageReceiver listener) => listeners.Add(listener);
