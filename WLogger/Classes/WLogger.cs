@@ -34,7 +34,7 @@ namespace WLogger
 
         public void Flush()
         {
-            if (receiver.MessageFilter == null)
+            if (receiver.MessageFilter != null)
             {
                 foreach (var listener in listeners)
                 {
