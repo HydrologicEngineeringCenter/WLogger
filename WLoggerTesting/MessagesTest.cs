@@ -40,6 +40,16 @@ namespace MessageTests
             Assert.AreEqual(e, errorMessage.GetMessage());
             Assert.AreEqual(2, errorMessage.GetErrorLevel());
         }
+
+        [TestMethod]
+        public void CreateMessageWithPayload()
+        {
+            var m = "This message has a payload!";
+            IMessage payload = new BasicMessage("And this is the payload!");
+            IPayloadMessage message = new PayloadMessage(m, payload);
+            Assert.AreEqual(m, message.GetMessage());
+            Assert.AreEqual(payload.GetMessage(), ((IMessage)message.GetPayload()).GetMessage());
+        }
     }
     
 }
